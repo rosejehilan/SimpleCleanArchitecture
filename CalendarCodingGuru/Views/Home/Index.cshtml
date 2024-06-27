@@ -49,7 +49,7 @@
         </td>
     </tr>
 </table>
-<div id="calendar" width="150px"></div>
+<div><button id="click" onclick="calendarReady.genarateCalendar.call();">Click me</button></div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -60,59 +60,63 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script>
+    
     $(document).ready(function () {
             $('#calendarAug').fullCalendar('destroy');
             $('#calendarSep').fullCalendar('destroy');
             $('#calendarOct').fullCalendar('destroy');
             $('#calendarNov').fullCalendar('destroy');
-
-            // const calOctorber = {
-            //     calendarMonth='calendarOct'
-            //     firstDay: '2024-10-01'
-            // }
-            // const calNovember = {
-            //     calendarMonth='calendarNov'
-            //     lastName: "2024-11-01"
-            // }
-            calendarReady.genarateCalendar.call('#calendarOct')
-            
-
-            $('#calendarAug').fullCalendar({
-                contentHeight: 250,
-                defaultDate: '2024-08-01',
-                timeFormat: 'h(:mm)a',
-                header: {
-                    left: '',
-                    center: 'title',
-                    right: ''
-                },
-                eventLimit: true,
-                eventColor: '#378006',
-                selectable: true,
-                editable: true,
-                
-            })
-            $('#calendarSep').fullCalendar({
-                contentHeight: 250,
-                defaultDate:'2024-09-01',
-                timeFormat: 'h(:mm)a',
-                header: {
-                    left: '',
-                    center: 'title',
-                    right: ''
-                },
-                eventLimit: true,
-                eventColor: '#378006',
-                selectable: true,
-                editable: true,
-
-            })
+            $('#calendarDec').fullCalendar('destroy');
+            $('#calendarJan').fullCalendar('destroy');
+            $('#calendarFeb').fullCalendar('destroy');
+            $('#calendarMar').fullCalendar('destroy');
+            $('#calendarApr').fullCalendar('destroy');
+            $('#calendarMay').fullCalendar('destroy');
+            $('#calendarJun').fullCalendar('destroy');
+            $('#calendarJul').fullCalendar('destroy');
+            window.calendarmonth = '#calendarAug'
+            window.defaultDate = '2024-08-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarSep'
+            window.defaultDate = '2024-09-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarOct'
+            window.defaultDate = '2024-10-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarNov'
+            window.defaultDate = '2024-11-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarDec'
+            window.defaultDate = '2024-12-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarJan'
+            window.defaultDate = '2025-01-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarFeb'
+            window.defaultDate = '2025-02-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarMar'
+            window.defaultDate = '2025-03-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarApr'
+            window.defaultDate = '2025-04-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarMay'
+            window.defaultDate = '2025-05-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarJun'
+            window.defaultDate = '2025-06-01'
+            calendarReady.genarateCalendar.call();
+            window.calendarmonth = '#calendarJul'
+            window.defaultDate = '2025-07-01'
+            calendarReady.genarateCalendar.call();
+           
         })
         const calendarReady = {
-            genarateCalendar: function (control) {
-                $('#calendarOct').fullCalendar({
+            genarateCalendar: function () {
+                $(calendarmonth).fullCalendar({
                     contentHeight: 250,
-                    defaultDate: '2024-10-01',
+                    defaultDate: defaultDate,
                     timeFormat: 'h(:mm)a',
                     header: {
                         left: '',
@@ -125,21 +129,7 @@
                     editable: true,
 
                 })
-                $('#calendarNov').fullCalendar({
-                    contentHeight: 250,
-                    defaultDate: '2024-11-01',
-                    timeFormat: 'h(:mm)a',
-                    header: {
-                        left: '',
-                        center: 'title',
-                        right: ''
-                    },
-                    eventLimit: true,
-                    eventColor: '#378006',
-                    selectable: true,
-                    editable: true,
-
-                })
+               
             }
         }
 </script>
