@@ -5,6 +5,50 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <h2>Calendar</h2>
+<table>
+    <tr>
+        <td>
+            <div id="calendarAug" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarSep" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarOct" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarNov" width="150px"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="calendarDec" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarJan" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarFeb" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarMar" width="150px"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="calendarApr" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarMay" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarJun" width="150px"></div>
+        </td>
+        <td>
+            <div id="calendarJul" width="150px"></div>
+        </td>
+    </tr>
+</table>
 <div id="calendar" width="150px"></div>
 
 
@@ -17,10 +61,25 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script>
     $(document).ready(function () {
-            $('#calendar').fullCalendar('destroy');
-            $('#calendar').fullCalendar({
+            $('#calendarAug').fullCalendar('destroy');
+            $('#calendarSep').fullCalendar('destroy');
+            $('#calendarOct').fullCalendar('destroy');
+            $('#calendarNov').fullCalendar('destroy');
+
+            // const calOctorber = {
+            //     calendarMonth='calendarOct'
+            //     firstDay: '2024-10-01'
+            // }
+            // const calNovember = {
+            //     calendarMonth='calendarNov'
+            //     lastName: "2024-11-01"
+            // }
+            calendarReady.genarateCalendar.call('#calendarOct')
+            
+
+            $('#calendarAug').fullCalendar({
                 contentHeight: 250,
-                defaultDate: new Date(),
+                defaultDate: '2024-08-01',
                 timeFormat: 'h(:mm)a',
                 header: {
                     left: '',
@@ -33,7 +92,56 @@
                 editable: true,
                 
             })
+            $('#calendarSep').fullCalendar({
+                contentHeight: 250,
+                defaultDate:'2024-09-01',
+                timeFormat: 'h(:mm)a',
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: ''
+                },
+                eventLimit: true,
+                eventColor: '#378006',
+                selectable: true,
+                editable: true,
+
+            })
         })
+        const calendarReady = {
+            genarateCalendar: function (control) {
+                $('#calendarOct').fullCalendar({
+                    contentHeight: 250,
+                    defaultDate: '2024-10-01',
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: '',
+                        center: 'title',
+                        right: ''
+                    },
+                    eventLimit: true,
+                    eventColor: '#378006',
+                    selectable: true,
+                    editable: true,
+
+                })
+                $('#calendarNov').fullCalendar({
+                    contentHeight: 250,
+                    defaultDate: '2024-11-01',
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: '',
+                        center: 'title',
+                        right: ''
+                    },
+                    eventLimit: true,
+                    eventColor: '#378006',
+                    selectable: true,
+                    editable: true,
+
+                })
+            }
+        }
 </script>
 }
 
