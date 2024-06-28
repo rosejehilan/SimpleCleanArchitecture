@@ -49,7 +49,7 @@
         </td>
     </tr>
 </table>
-<div><button id="click" onclick="calendarReady.genarateCalendar.call();">Click me</button></div>
+<div><button id="click" onclick="alert(defaultEvent);">Click me</button></div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -62,6 +62,34 @@
 <script>
     
     $(document).ready(function () {
+            var events = [];
+            var selectedEvent = null;
+            FetchEventAndRenderCalendar();
+            function FetchEventAndRenderCalendar() {
+                events = [];
+                $.ajax({
+                    type: "GET",
+                    url: "/home/GetEvents",
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            events.push({
+                                eventID: v.keyId,
+                                title: v.CalendarCode,
+                                start: moment(v.Start),
+                                end: v.End != null ? moment(v.End) : null,
+                                color: v.color
+                                
+                            });
+                        })
+
+                      
+                    },
+                    error: function (error) {
+                        alert('failed');
+                    }
+                })
+            }
+       
             $('#calendarAug').fullCalendar('destroy');
             $('#calendarSep').fullCalendar('destroy');
             $('#calendarOct').fullCalendar('destroy');
@@ -110,7 +138,8 @@
             window.calendarmonth = '#calendarJul'
             window.defaultDate = '2025-07-01'
             calendarReady.genarateCalendar.call();
-           
+            
+        
         })
         const calendarReady = {
             genarateCalendar: function () {
@@ -127,6 +156,7 @@
                     eventColor: '#378006',
                     selectable: true,
                     editable: true,
+                    events: events
 
                 })
                

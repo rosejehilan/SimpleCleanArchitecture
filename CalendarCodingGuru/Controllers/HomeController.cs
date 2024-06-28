@@ -2,6 +2,8 @@ using CalendarCodingGuru.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Application.Interfaces;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CalendarCodingGuru.Controllers
 {
@@ -16,10 +18,18 @@ namespace CalendarCodingGuru.Controllers
             _calendarDayServices = calendarDayServices;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var blogs = await _calendarDayServices.GetAllAsync();
-            return View(blogs);
+            return View();
+        }
+        public async Task<JsonResult> GetEvents()
+        {
+            
+            var calendarDays = await _calendarDayServices.GetAllAsync();
+            
+            var result = Json(calendarDays);
+            return result;
+           
         }
 
         public IActionResult Privacy()
