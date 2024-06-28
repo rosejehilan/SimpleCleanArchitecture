@@ -12,7 +12,12 @@ namespace Infrastructure.Data
 {
     public class CalendarDBContext:DbContext
     {
-        public CalendarDBContext(DbContextOptions<CalendarDBContext> dbContextOptions) : base(dbContextOptions) { }
+        public CalendarDBContext()
+        {
+            
+        }
+        public CalendarDBContext(DbContextOptions<CalendarDBContext> dbContextOptions) : base(dbContextOptions) 
+        { }
 
         public DbSet<CalendarDay> calendarDays { get; set; }
      

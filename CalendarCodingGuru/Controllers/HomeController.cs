@@ -1,21 +1,25 @@
 using CalendarCodingGuru.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Application.Interfaces;
 
 namespace CalendarCodingGuru.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICalendarDayServices _calendarDayServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICalendarDayServices calendarDayServices)
         {
             _logger = logger;
+            _calendarDayServices = calendarDayServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var blogs = await _calendarDayServices.GetAllAsync();
+            return View(blogs);
         }
 
         public IActionResult Privacy()
