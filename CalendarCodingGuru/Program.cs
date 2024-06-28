@@ -1,5 +1,18 @@
+using Infrastructure.Data;
+using Application.Services;
+using Domain.Repositories ;
+using Infrastructure.Data;
+using Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
+using Application.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<CalendarDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CalendarDB") ??
+    throw new InvalidOperationException("Connection string 'BlogBbContext' not found.")));
+
+builder.Services.AddTransient<ICalendarDayRepository, CalendarDay>();
+builder.Services.AddTransient<ICalendarDayServices, CalendarDayService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
